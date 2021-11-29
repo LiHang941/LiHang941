@@ -16,7 +16,6 @@ jobs:
 
       - name: Auto green
         run: |
-          apt install jq -y
           curl https://api.xygeng.cn/one -k | jq '.data.content' > /root/mm.txt
           git config --local user.email "1329075357@qq.com"
           git config --local user.name "justin.li"
