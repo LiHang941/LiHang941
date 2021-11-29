@@ -16,9 +16,11 @@ jobs:
 
       - name: Auto green
         run: |
+          apt install jq -y
+          curl https://api.xygeng.cn/one -k | jq '.data.content' > /root/mm.txt
           git config --local user.email "1329075357@qq.com"
           git config --local user.name "justin.li"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
-          git commit --allow-empty -m "花有重开日，人无在少年"
+          git commit --allow-empty -F /root/mm.txt
           git push
