@@ -16,10 +16,10 @@ jobs:
 
       - name: Auto green
         run: |
-          curl https://api.xygeng.cn/one -k | jq '.data.content' > /root/mm.txt
+          curl https://api.xygeng.cn/one -k | jq '.data.content' > /tmp/mm.txt
           git config --local user.email "1329075357@qq.com"
           git config --local user.name "justin.li"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
-          git commit --allow-empty -F /root/mm.txt
+          git commit --allow-empty -F /tmp/mm.txt
           git push
